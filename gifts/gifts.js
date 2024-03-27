@@ -283,7 +283,7 @@ const gifts = {
     description: "Bleeding and Stun effects received are halved.",
   },
   resolve: { giftID: "resolve", name: "Resolve", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "authority", level: 20 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Willpower." },
-  confidence: { giftID: "confidence", name: "Confidence", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "authority", level: 25 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Charisma.\t" },
+  confidence: { giftID: "confidence", name: "Confidence", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "authority", level: 25 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Charisma." },
   valorous: { giftID: "valorous", name: "Valorous", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "authority", level: 30 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Courage." },
   responsibility: {
     giftID: "responsibility",
@@ -803,10 +803,10 @@ const gifts = {
     damages: [],
     heals: [],
     description:
-      "Character may choose only one: Discourage\nEncourage may now also be used to damage an enemy (for the same amount as it would have healed an ally). Empassion\nEncourage heals for three times as much and Inspire heals for twice as much. (replaces Wordsmith).\t Glorify\nHype may optionally apply to all allies nearby, but it costs 2SN per ally affected. ",
+      "Character may choose only one: Discourage\nEncourage may now also be used to damage an enemy (for the same amount as it would have healed an ally). Empassion\nEncourage heals for three times as much and Inspire heals for twice as much. (replaces Wordsmith). Glorify\nHype may optionally apply to all allies nearby, but it costs 2SN per ally affected. ",
   },
   optimistic: { giftID: "optimistic", name: "Optimistic", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "charisma", level: 30 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Courage." },
-  humble: { giftID: "humble", name: "Humble", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "charisma", level: 35 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Authority.\t" },
+  humble: { giftID: "humble", name: "Humble", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "charisma", level: 35 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Authority." },
   zeal: {
     giftID: "zeal",
     name: "Zeal",
@@ -1846,7 +1846,7 @@ const gifts = {
     useCost: "3PT & 1SN",
     damages: [],
     heals: [],
-    description: "Glyph: Replaces Direct I. This glyph is the same as Direct I, but costs less. \t",
+    description: "Glyph: Replaces Direct I. This glyph is the same as Direct I, but costs less. ",
   },
   combinei: {
     giftID: "combinei",
@@ -2161,7 +2161,7 @@ const gifts = {
     giftID: "enchant:recharge",
     name: "Enchant: Recharge",
     type: "Active",
-    cost: "6 To Use Enchant Charge: [1PT + SN of Rune] \tIf Contain II: [1PT + Stamina of Rune] To Enchant: [Cost of Spell & 25SN] \tMay spend Max SN to reduce recharge",
+    cost: "6 To Use Enchant Charge: [1PT + SN of Rune] If Contain II: [1PT + Stamina of Rune] To Enchant: [Cost of Spell & 25SN] May spend Max SN to reduce recharge",
     stackMax: 1,
     requiredSkills: [{ skillID: "inscription", level: 35 }],
     requisiteGifts: ["enchant:charge", "enchant:infinity"],
@@ -2324,7 +2324,7 @@ const gifts = {
     description: "Spend one PT ‘preparing’. This adds +2d20 to the character’s next maneuver as a bonus. This may be used once per turn. If out of combat, the action takes 25% longer due to preparation.",
   },
   conviction: { giftID: "conviction", name: "Conviction", type: "Passive", cost: 1, stackMax: 1, requiredSkills: [{ skillID: "meditationrest", level: 10 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Willpower." },
-  serenityi: { giftID: "serenityi", name: "Serenity I", type: "Passive", cost: 1, stackMax: 1, requiredSkills: [{ skillID: "meditationrest", level: 10 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+15 to Stamina, +5 to Sanity.\t" },
+  serenityi: { giftID: "serenityi", name: "Serenity I", type: "Passive", cost: 1, stackMax: 1, requiredSkills: [{ skillID: "meditationrest", level: 10 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+15 to Stamina, +5 to Sanity." },
   secondwindi: {
     giftID: "secondwindi",
     name: "Second Wind I",
@@ -2432,7 +2432,7 @@ const gifts = {
     useCost: [],
     damages: [],
     heals: [],
-    description: "Meditate now heals for [20x Med/Rest total] and [1d6 SN] but can only be used once use per day. In addition, when the character has no remaining Sanity (or is in the negatives), they don’t need to eat. However, they do still need water. ",
+    description: "Meditate now fully heals Stamina and Stagger. Rest now uses a base [2d6] roll for Sanity Regen. In addition, when the character has no remaining Sanity (or is in the negatives), they don’t need to eat. However, they do still need water. ",
   },
   secondwindii: {
     giftID: "secondwindii",
@@ -2919,7 +2919,7 @@ const gifts = {
     heals: [],
     description: "+10 bonus to Aim for the character’s next attack, if it is a Sneak Attack. If Ambush hits its target, then the character gains +10 to Initiative. This bonus to Initiative may only be granted once.",
   },
-  subtlety: { giftID: "subtlety", name: "Subtlety", type: "Passive", cost: 1, stackMax: 1, requiredSkills: [{ skillID: "stealth", level: 10 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Balance.\t" },
+  subtlety: { giftID: "subtlety", name: "Subtlety", type: "Passive", cost: 1, stackMax: 1, requiredSkills: [{ skillID: "stealth", level: 10 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Balance." },
   unseenmove: {
     giftID: "unseenmove",
     name: "Unseen Move",
@@ -2935,7 +2935,7 @@ const gifts = {
     description:
       "The character spends [1d6SN] to deal double Trauma Effects on the Trauma Table for their next attack (doubling is additive). This is only usable if the character’s attack can be considered a Sneak Attack. The resources must be spent before the attack is attempted (this cannot be used after an\n      attack has been initiated and rolled for).",
   },
-  mystique: { giftID: "mystique", name: "Mystique", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "stealth", level: 25 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Charisma.\t" },
+  mystique: { giftID: "mystique", name: "Mystique", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "stealth", level: 25 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+10 to Charisma." },
   assassinate: {
     giftID: "assassinate",
     name: "Assassinate",
@@ -3459,7 +3459,7 @@ const gifts = {
     heals: [],
     description: "The character’s next melee or thrown strike adds [1d6+2 Health Damage]. One use of Murder per attack.",
   },
-  bruteforce: { giftID: "bruteforce", name: "Brute Force", type: "Passive", cost: 3, stackMax: 1, requiredSkills: [{ skillID: "weapons", level: 15 }], requisiteGifts: ["power"], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+15 to Arm Muscle.\t" },
+  bruteforce: { giftID: "bruteforce", name: "Brute Force", type: "Passive", cost: 3, stackMax: 1, requiredSkills: [{ skillID: "weapons", level: 15 }], requisiteGifts: ["power"], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+15 to Arm Muscle." },
   cleave: {
     giftID: "cleave",
     name: "Cleave",
@@ -3500,7 +3500,7 @@ const gifts = {
     useCost: "2d6SN",
     damages: [],
     heals: [],
-    description: "The character’s next melee strike adds [3d6+3] Health Damage and [100 Stamina Damage]. One use of Eviscerate per attack.\t",
+    description: "The character’s next melee strike adds [3d6+3] Health Damage and [100 Stamina Damage]. One use of Eviscerate per attack.",
   },
   masterofpower: {
     giftID: "masterofpower",
