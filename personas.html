@@ -9104,15 +9104,20 @@
   const elements = [...document.body.children];
   let personas = [];
   let currentPersona = "";
+  let personaDescriptions = {};
+  let index = -1;
   let persona = null;
-  const scaffoldPersona = () => {
-    let x = {
-      persona: currentPersona,
+  const scaffoldPersona = (id) => {
+    return {
+      personaID: currentPersona,
+      id: id,
+      name: "",
       rank: "",
       level: 0,
       size: "Medium",
       occupies: [1, 1, 2],
       languages: "Colonial (3) or Choice (3) & Colonial (1)",
+      description: "",
       personality: "",
       archetype: "",
       profession: "",
@@ -9504,8 +9509,8 @@
         items: [],
       },
     };
-    return x;
   };
+  let describing = "";
   elements.forEach((e) => {
     if (e.tagName === "DIV") {
       if (e.children.length) {
@@ -9514,11 +9519,31 @@
           if (ee.classList.contains("Section-Heading")) {
             // console.log("secondmost");
             if (ee.innerText.indexOf("The ") > -1) {
-              currentPersona = ee.innerText.substring(ee.innerText.indexOf("The ") + 4);
+              currentPersona = ee.innerText.substring(ee.innerText.indexOf("The ") + 4).toLowerCase();
+              describing = true;
+              personaDescriptions[currentPersona] = {
+                summary: "",
+                description: "",
+                strategy: "",
+                examples: "",
+              };
+            } else if (ee.innerText.indexOf("Level ") > -1) {
+              personas[index].level = +ee.innerText.substring(ee.innerText.indexOf("Level ") + 6);
             } else {
-              console.log("immediate", currentPersona, ee.innerText);
-              scaffoldPersona();
+              describing = "";
+              persona = scaffoldPersona(ee.innerText.toLowerCase().replaceAll(" ", ""));
+              personas.push(persona);
+              index++;
+              personas[index].name = ee.innerText;
             }
+          } else if (ee.classList.contains("Sub-Header") && describing) {
+            describing = ee.innerText.toLowerCase();
+          } else if (ee.classList.contains("Body") && describing) {
+            let b = personaDescriptions[currentPersona][describing] ? "\n" : "";
+            personaDescriptions[currentPersona][describing] += b + ee.innerText;
+          } else if (ee.classList.contains("Sub-Header")) {
+          } else if (ee.classList.contains("Body")) {
+          } else {
           }
           if (ee.children.length) {
             let e2s = [...ee.children];
@@ -9540,6 +9565,8 @@
       }
     }
   });
+  console.log(personas);
+  console.log(personaDescriptions);
   // class=Section-Heading "The "
   //   Opening rotation:
   //     summary
