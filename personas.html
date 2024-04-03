@@ -9337,7 +9337,6 @@
       },
       vitality: {
         sanity: {
-          base: 25,
           current: 0,
           max: 0,
           bonuses: [],
@@ -9346,7 +9345,7 @@
             base: 0,
             bonuses: [],
           },
-          isdepressed: false,
+          miserable: false,
         },
         stamina: {
           current: 0,
@@ -9354,7 +9353,6 @@
           isko: false,
           arts: ["toughness"],
           multiplier: 1,
-          divider: 10,
           bonuses: [],
           stagger: {
             current: 0,
@@ -9521,6 +9519,9 @@
     };
   };
   let describing = "";
+  let moveTitle = "";
+  let moveCosts = "";
+  let count = 0
   elements.forEach((e) => {
     if (e.tagName === "DIV") {
       if (e.children.length) {
@@ -9551,10 +9552,18 @@
           } else if (ee.classList.contains("Body") && describing) {
             let b = personaDescriptions[currentPersona][describing] ? "\n" : "";
             personaDescriptions[currentPersona][describing] += b + ee.innerText;
-          } else if (ee.innerText.indexOf("Colonial (3)") > -1) {
+          } else if (ee.innerText.indexOf("Colonial (3)") > -1 || ee.innerText.indexOf("Occupies:") > -1) {
+          } else if (ee.classList.contains("Title")) {
+            console.log("title?",ee.innerText,+ee.innerText[ee.innerText.length-1] ||"")
           } else if (ee.classList.contains("Sub-Header")) {
+          } else if (ee.classList.contains("Sub-Header") && moveTitle) {
+            console.log("move costs?",ee.innerText)
+          } else if (ee.classList.contains("Body-Grouped") && moveTitle) {
+            console.log("ending?",moveTitle,ee.innerText)
+            moveTitle = ""
           } else if (ee.classList.contains("Body")) {
             if (ee.innerText.indexOf("Attack") === 0 && ee.innerText.indexOf("Attacks") < 0 && ee.innerText.indexOf("N/A") < 0) {
+              moveTitle = ""
               let p = ee.innerText.indexOf("+")
               personas[index].attack.primary.value = +ee.innerText.substring(p+1,p+4)
               let match = ee.innerText.match(/\(([^)]+)\)/);
@@ -9607,17 +9616,40 @@
             } else if (ee.innerText.indexOf("Move") === 0 && ee.innerText.indexOf("INI") > -1) {
               const iniStart = ee.innerText.indexOf("INI")
               const ptStart = ee.innerText.indexOf("PT")
-              let move = ee.innerText.substring(5,iniStart)
-              let ini = ee.innerText.substring(iniStart+4, ptStart)
-              let pt = ee.innerText.substring(ptStart+3)
-              console.log(move,ini,pt)
-            } else {
+              let move = ee.innerText.substring(5,iniStart).split(",")
+              let shifts = parseInt(move[1]) || 0
+              move = move[0].split("/")
+              let ini = +ee.innerText.substring(iniStart+4, ptStart)
+              let pt = +ee.innerText.substring(ptStart+3).split(",")[0]
+              personas[index].initiative.base = ini
+              personas[index].potential.base = pt
+              personas[index].move.shifts = shifts
+              personas[index].move.distance = +move[0]
+              personas[index].move.cost = +move[1]
+            } else if (ee.innerText.indexOf("Stam") === 0 && ee.innerText.indexOf("SN") > -1) {
+              const snStart = ee.innerText.indexOf("SN")
+              const dhstart = ee.innerText.indexOf("DH")
+              let stam = Math.ceil((+ee.innerText.substring(5,snStart))/10)
+              let sn = ee.innerText.substring(snStart+3, dhstart).split(",")
+              let regen = parseInt(sn[1]) || 0
+              sn = +sn[0]
+              let dh = +ee.innerText.substring(dhstart+3)
+              personas[index].vitality.stamina.current = stam
+              personas[index].vitality.stamina.max = stam
+              personas[index].vitality.sanity.current = sn
+              personas[index].vitality.sanity.max = sn
+              personas[index].vitality.sanity.regen.base = regen
+              personas[index].vitality.deathhealth.current = dh
+              personas[index].vitality.deathhealth.max = dh
+            } else if (moveTitle) {
+              console.log(ee.innerText)
             }
           } else {
           }
           if (ee.children.length) {
             let e2s = [...ee.children];
             e2s.forEach((eee) => {
+              // console.log("thirdmost",eee.innerText);
               if (eee.classList.contains("Section-Heading")) {
                 console.log("thirdmost");
               }
