@@ -2340,7 +2340,7 @@ const gifts = {
     useCost: "Free, but triggers at half Stam",
     damages: [],
     heals: [],
-    description: "When the character drops below half of their Stamina, they may roll to heal Stamina, based on their Level. The character rolls 1d20+20 for every Level (a level 5 character would roll 5d20+100). This effect may only happen once per day.",
+    description: "The first time you take any amount of Stagger, you instead ignore it. This effect may only happen once per day.",
   },
   trusti: { giftID: "trusti", name: "Trust I", type: "Passive", cost: 2, stackMax: 1, requiredSkills: [{ skillID: "meditationrest", level: 10 }], requisiteGifts: [], requisiteAbilitiesForUse: [], useCost: [], damages: [], heals: [], description: "+4 Shape Points." },
   preserve: {
